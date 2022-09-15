@@ -21,27 +21,27 @@ class UserControllerTest {
     }
 
     @Test
-    void findAll() {
-        assertEquals(0, controller.findAll().size(),
+    void getAll() {
+        assertEquals(0, controller.getAll().size(),
                 "При создании контроллера список пользователей должен быть пустым");
     }
 
     @Test
     void createUser() {
         controller.createUser(user1);
-        assertEquals(1, controller.findAll().size(), "Не удалось создать пользователя");
+        assertEquals(1, controller.getAll().size(), "Не удалось создать пользователя");
     }
 
     @Test
     void updateUser() {
         controller.createUser(user1);
-        User user = controller.findAll()
+        User user = controller.getAll()
                 .stream()
                 .collect(Collectors.toList())
                 .get(0);
         String name = "user";
         user.setName(name);
-        assertEquals(name, controller.findAll()
+        assertEquals(name, controller.getAll()
                 .stream()
                 .collect(Collectors.toList())
                 .get(0).getName(), "Не удалось изменить пользователя");

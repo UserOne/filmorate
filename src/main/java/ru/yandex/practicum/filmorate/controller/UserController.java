@@ -19,7 +19,7 @@ public class UserController {
     private final HashMap<Integer, User> users = new HashMap<>();
 
     @GetMapping
-    public List<User> findAll() {
+    public List<User> getAll() {
         log.info("Получен GET запрос на получение списка всех пользователей");
         if (users.isEmpty()) {
             return Collections.emptyList();

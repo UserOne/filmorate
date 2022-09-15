@@ -31,8 +31,8 @@ class FilmControllerTest {
     }
 
     @Test
-    void findAll() {
-        assertEquals(0, controller.findAll().size(),
+    void getAll() {
+        assertEquals(0, controller.getAll().size(),
                 "при создании контроллека список должен быть пустым");
     }
 
@@ -40,7 +40,7 @@ class FilmControllerTest {
     void createFilm() {
         controller.createFilm(film1);
         controller.createFilm(film2);
-        assertEquals(2, controller.findAll().size(),
+        assertEquals(2, controller.getAll().size(),
                 "Фильмы не были добавлены в контроллер");
     }
 
@@ -48,7 +48,7 @@ class FilmControllerTest {
     void updateFilm() {
         controller.createFilm(film2);
         controller.createFilm(film1);
-        Film oldFilm = controller.findAll()
+        Film oldFilm = controller.getAll()
                 .stream()
                 .collect(Collectors.toList())
                 .get(0);
@@ -62,7 +62,7 @@ class FilmControllerTest {
                 .build();
         controller.updateFilm(film);
         assertEquals(description,
-                controller.findAll()
+                controller.getAll()
                         .stream()
                         .collect(Collectors.toList())
                         .get(0)

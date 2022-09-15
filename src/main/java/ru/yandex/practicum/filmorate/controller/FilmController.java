@@ -18,7 +18,7 @@ public class FilmController {
     private static final LocalDate EMERGENCE_OF_CINEMA = LocalDate.of(1895, 12, 25);
 
     @GetMapping
-    public List<Film> findAll() {
+    public List<Film> getAll() {
         log.info("Получен GET запрос на получение списка всех фильмов");
         if (films.isEmpty()) {
             return Collections.emptyList();
@@ -39,7 +39,7 @@ public class FilmController {
     @PutMapping
     public Film updateFilm(@Valid @RequestBody Film film) {
         log.info("Получен PUT запрос на изменение фильма");
-        if(!films.containsKey(film.getId())){
+        if (!films.containsKey(film.getId())) {
             log.info("Фильма с указанным Id не существует");
             throw new ValidationException("Фильма с указанным Id не существует");
         }
